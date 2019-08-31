@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.5
+// @version      1.6
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -234,8 +234,13 @@ function highlightNote(){
     var entryField = boxContents.toLowerCase();
     if (entryField.startsWith('/note ')) {
         $('.chat-actions__current-chat-action-compose textarea').addClass('note');
+        $('.chat-actions__current-chat-action-compose textarea').removeClass('tag');
+    } else if (entryField.startsWith('/tag ')) {
+        $('.chat-actions__current-chat-action-compose textarea').addClass('tag');
+        $('.chat-actions__current-chat-action-compose textarea').removeClass('note');
     } else {
         $('.chat-actions__current-chat-action-compose textarea').removeClass('note');
+        $('.chat-actions__current-chat-action-compose textarea').removeClass('tag');
     }
 }
 

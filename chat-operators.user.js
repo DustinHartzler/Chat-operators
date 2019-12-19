@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.6
+// @version      1.61
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -223,11 +223,23 @@ $("body").on('click','#showRedHEs', function () {
 
 $("body").on('keyup click change','.chat-actions__current-chat-action-compose textarea', function(){
     highlightNote();
+    showTags();
 });
 
 window.setInterval(function(){
     highlightNote();
 }, 2500);
+
+function showTags() {
+    $('.auto-complete__list.is-tags-list .auto-complete__list-item').each(function(tag) {
+        var tagName = $(this).find('.auto-complete__item-name').html();
+        if (tagName.startsWith('xxx_')) {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    });
+}
 
 function highlightNote(){
     var boxContents = $('.chat-actions__current-chat-action-compose textarea').val();

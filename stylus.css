@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Happychat Operators
 @namespace      github.com/senff/Chat-operators
-@version        1.6
+@version        1.8
 @description    Make the Happychat Operators list easier to understand.
 @author         Senff
 @updateURL      https://raw.githubusercontent.com/senff/Chat-operators/master/stylus.css
@@ -15,22 +15,22 @@
         .chat__chat-queue .green {color:#4ab866;}
         .chat__chat-queue .yellow {color:#f0b849;}
         .chat__chat-queue .highlight {font-weight: bold;}
-
-
+     
+     
     /* --- Sidebar width --- */
         .chat__chat-queue {
             -ms-flex: 0 1 350px;
             flex: 0 1 350px;
             min-width: 350px;
         }
-
-    /* --- Hide some stuff we don't need --- */
+     
+    /* --- Hide some stuff we don't need --- */    
         .chat__chat-queue .operators__offline,
         .chat__chat-queue .operators.operators:before,
         .chat__chat-queue .operators__capacity {
             display: none;
         }
-
+     
     /* --- Operators box --- */
         .chat__chat-queue .capacity__operators {
             height: 300px;
@@ -47,12 +47,12 @@
         }
 
         #operatorData {
-            width:0;
-            height: 0;
-            font-size: 0;
+            width:0; 
+            height: 0; 
+            font-size: 0; 
             overflow: hidden;
         }
-
+     
     /* --- Each individual operator line --- */
         .chat__chat-queue .operators {
             display: block;
@@ -61,47 +61,99 @@
             overflow:hidden;
             font-size: 12px;
             line-height: 23px;
-            padding: 3px 10px 2px 5px;
+            padding: 3px 5px 2px 5px;
         }
 
 
     /* --- Removes double entries (is bug) --- */
         .chat__chat-queue .operator_info {
             display: none;
+            overflow: hidden;
         }
         .chat__chat-queue .operator_info:nth-of-type(1) {
             display: block;
         }
-
-    /* --- Operator icon/name/load/etc. --- */
+     
+    /* --- Operator icon/name/load/etc. --- */    
         .chat__chat-queue .operators img {
             float: left;
-            margin-right: 5px;
+            margin-right: 2px;
             margin-bottom: 0;
             width: 23px;
             height: 23px;
             border: solid 3px transparent;
         }
-
-            /* --- Avatar status colors --- */
+     
+            /* --- Avatar status colors --- */    
             .chat__chat-queue .operators__available img {border-color:#4ab866;}
             .chat__chat-queue .operators__reserve img {border-color:#0087be;}
             .chat__chat-queue .operators__busy img {border-color:#f0b849;}
             .chat__chat-queue .operators__unavailable img {border-color:#d94f4f;}
 
-        .chat__chat-queue .operator_name {
-            float:left;
-            padding-right: 10px;
+        .chat__chat-queue .operator_lang,
+        .chat__chat-queue .operator_skills {
+            float: left;
             height: 23px;
+            margin-right: 2px;
         }
 
-        .chat__chat-queue .operator_name span {
-            font-weight: bold;
-            max-width: 145px;
+        .chat__chat-queue .operator_lang .language,
+        .chat__chat-queue .operator_skills .skill,
+        .chat__chat-queue .operator_skills .bald-guy{
+            float: left;
+            width:19px;
+            height: 19px;
+            border-radius: 100px;
+            margin: 2px 2px 0 0;
+            border: solid 1px #c0c0c0;            
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+        }
+
+        .chat__chat-queue .operator_lang .language.pt-br {
+            background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
+        }
+
+        .chat__chat-queue .operator_lang .language.es {
+            background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
+        }
+
+        .chat__chat-queue .operator_lang .language.fr {
+            background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_France_-_Circle-512.png');
+        }
+
+        .chat__chat-queue .operator_skills .bald-guy,
+        .chat__chat-queue .operator_skills .bald-he {
+            background-image: url('https://senffomattic.files.wordpress.com/2020/01/bald-guy.png');
+            background-position: left 2px;
+            border-color: transparent;
+        }
+
+        .chat__chat-queue .operator_skills .skill.css {
+            background-image: url('https://cssrequests.files.wordpress.com/2019/12/css.png');
+            background-position: left 2px;
+            border-color: transparent;
+        }
+
+        .chat__chat-queue .operator_skills .skill.domains {
+            background-image: url('https://domainsuniversity.files.wordpress.com/2019/12/domain.png');
+            border-color: transparent;            
+        }
+
+        .chat__chat-queue .operator_skills .skill.atomic {
+            background-image: url('https://atomicuniversity.files.wordpress.com/2019/09/atom-nuclear-atomic-physics-education-512.png');
+            border-color: transparent;            
+        }
+
+
+        .chat__chat-queue .operator_name {
+            padding-right: 5px;
+            height: 23px;
+            font-weight: bold;  
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            display: inline-block;
+            float: left;
         }
 
         .chat__chat-queue .operators__unavailable .operator_name span {color: #d94f4f;}
@@ -109,7 +161,8 @@
         .chat__chat-queue .operators__reserve .operator_name span {color: #0087be;}
         .chat__chat-queue .operators__busy .operator_name span {color: #dd9922;}
 
-        .chat__chat-queue .operator_name.es span::before,
+        .chat__chat-queue .operator_name.fr span::before,
+        .chat__chat-queue .operator_name.es span:not(.opName)::before, 
         .chat__chat-queue .operator_name.pt-br::before {
             content: "";
             border-radius: 25px;
@@ -120,14 +173,6 @@
             margin-right: 3px;
             margin-top: 2px;
             background-size: auto 100%;
-         }
-
-        .chat__chat-queue .operator_name.pt-br::before {
-            background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
-         }
-
-        .chat__chat-queue .operator_name.es span::before {
-            background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
          }
 
         .chat__chat-queue .operator_name.atomic::after {
@@ -164,37 +209,39 @@
 
         .chat__chat-queue .operator_load {
             float: right;
-            width: 16px;
+            width: 20px;
             text-align: right;
             font-size: 11px;
         }
-
+     
         .chat__chat-queue .operator_capacity {
-            height: 8px;
+            height: 9px;
             background: #e7e7e7;
             background: linear-gradient(to bottom, #dddddd, #eaeaea);
-            float:right;
+            float: right;
             border-radius: 5px;
-            margin: 8px 5px;
+            margin: 8px 3px;
             border: solid 1px #e0e0e0;
             border-style: inset;
+            max-width: 72px;
         }
 
         .chat__chat-queue .fullHE,
         .chat__chat-queue .overloadHE {
             border-left: solid 1px #660000;
             border-top: solid 1px #660000;
-            height: 9px;
+            height: 10px;
         }
-
-    /* border: solid 1px #d94f4f; height: 8px; margin-top:-1px; */
 
         .chat__chat-queue .operator_ind {
             height: 100%;
             max-width: 100%;
             border-radius: 5px;
             float: right;
+            transition: all 0.5s;
         }
+
+
 
     /* --- Load/throttle colors --- */
         .capLevel0 .operator_ind,
@@ -209,7 +256,7 @@
         .capLevel9 .operator_ind {background: #ffaa22;}
         .capLevel10 .operator_ind {background: #d94f4f;}
         .capLevelOver .operator_ind {background: #660000;}
-
+     
     /* --- Additional stats --- */
         .operators_stats {
             margin: 10px;
@@ -296,10 +343,6 @@
             background-color: #FFFFCC;
         }
 
-        .chat__current-chat__actions textarea.tag {
-            background-color: #ddf1e2;
-        }
-
         .chat-panel__return-to-now {
             display: none;
         }
@@ -311,5 +354,3 @@
         .chat__current-chat__actions button {
             display: none;
         }
-
-}

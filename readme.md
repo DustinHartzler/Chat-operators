@@ -31,9 +31,8 @@ Tampermonkey does the same, but for Javascript, to modify functionality.
 4. Ensure that "Applies to" is set to "**URLS on the domain**" / **hud.happychat.io**
 5. **SAVE**
 6. Install Tampermonkey
-7. Create a new script, with name "_HappyChat Operators_"
-8. Paste the contents of **tampermonkey.js** into the code field
-9. **SAVE**
+7. Go to https://github.com/senff/Chat-operators/raw/master/chat-operators.user.js
+8. Select the **INSTALL** button
 
 ## MORE INFORMATION:
 https://heinvestigations.wordpress.com/2019/01/14/happy-suite-of-happiness-hacks/

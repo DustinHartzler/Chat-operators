@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.61
+// @version      1.7
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -45,24 +45,37 @@ function nameAdd() {
 
     $('.chat__chat-queue .operators').each(function( index ) {
 
-        var opSkills = '';
+        var opSkills = new Array();
+        var opLang = new Array();
         var opInfo = $(this).find('img').attr('title');
         // var opName = opInfo.substring(0, opInfo.indexOf(' ') + 1);
 
         if(opInfo.includes('pt-br')) {
-            opSkills = " pt-br ";
+            opLang.push("pt-br");
+        }
+
+        if(opInfo.includes('fr')) {
+            opLang.push("fr");
         }
 
         if(opInfo.includes(': es') || opInfo.includes(', es') || opInfo.includes('es,')){
-            opSkills = opSkills + " es ";
+            opLang.push("es");
         }
 
         if(opInfo.includes('atomic') && !opInfo.includes('fresatomica')) { // Because Oliwia has "atomic" in her username :D
-            opSkills = opSkills + " atomic ";
+            opSkills.push("atomic");
+        }
+
+        if(opInfo.includes('domains')) {
+            opSkills.push("domains");
         }
 
         if(opInfo.includes('WPconcierge')) {
-            opSkills = opSkills + " concierge ";
+            opSkills.push("concierge");
+        }
+
+        if(opInfo.includes('css')) {
+            opSkills.push("css");
         }
 
         var opName = opInfo.substring(opInfo.lastIndexOf("(")+1,opInfo.lastIndexOf(")"));
@@ -82,11 +95,25 @@ function nameAdd() {
         if (!$(this).hasClass('hasName')) {
             $(this).addClass('hasName');
             $(this).find('.operator_name').remove();
-            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opSkills+'"><span></span></div><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
+            $(this).find('img').after('<div class="operator_info"><div class="operator_lang"></div><div class="operator_name"></div><div class="operator_skills"></div><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
         }
 
+        var langCount;
+        var languages = '';
+        for (langCount = 0; langCount < opLang.length; langCount++) {
+            languages += '<div class="language '+opLang[langCount]+'" title="'+opLang[langCount]+'"></div>';
+        }
+        $(this).find('.operator_lang').html(languages);
+
+        var skillCount;
+        var skills = '';
+        for (skillCount = 0; skillCount < opSkills.length; skillCount++) {
+            skills += '<div class="skill '+opSkills[skillCount]+'" title="'+opSkills[skillCount]+'"></div>';
+        }
+        $(this).find('.operator_skills').html(skills);
+
         $(this).find('.operator_capacity').css('width',((opThrottle*14)+2)+'px');
-        $(this).find('.operator_name span').html(opName);
+        $(this).find('.operator_name').html(opName);
         $(this).find('.operator_load').html(opLoad+'/'+opThrottle);
         if (opLoad > opThrottle) {
             $(this).find('.operator_load').addClass('red').addClass('highlight');

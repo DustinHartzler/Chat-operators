@@ -8,7 +8,7 @@
 ==/UserStyle== */
 @-moz-document domain("hud.happychat.io") {
     
-    /* --- General styles --- */
+/* --- General styles --- */
         .chat__chat-queue .red {color:#d94f4f;}
         .chat__chat-queue .blue {color:#0087be;}
         .chat__chat-queue .green {color:#4ab866;}
@@ -98,7 +98,8 @@
 
         .chat__chat-queue .operator_lang .language,
         .chat__chat-queue .operator_skills .skill,
-        .chat__chat-queue .operator_skills .bald-he {
+        .chat__chat-queue .operator_skills .bald-he,
+        .chat__chat-queue .operator_skills .beard {
             float: left;
             width:19px;
             height: 19px;
@@ -122,11 +123,17 @@
         }
 
         .chat__chat-queue .operator_skills .bald-guy,
-        .chat__chat-queue .operator_skills .bald-he {
+        .chat__chat-queue .operator_skills .bald-he{
             background-image: url('https://senffomattic.files.wordpress.com/2020/01/bald-guy.png');
             background-position: left 2px;
             border-color: transparent;
         }
+
+        .chat__chat-queue .operator_skills .beard {
+            background-image: url('https://senffomattic.files.wordpress.com/2020/01/beard.png');
+            background-position: left 2px;
+            border-color: transparent;
+        }   
 
         .chat__chat-queue .operator_skills .skill.css {
             background-image: url('https://cssrequests.files.wordpress.com/2019/12/css.png');
@@ -353,4 +360,5 @@
         .chat__current-chat__actions button {
             display: none;
         }
+  
 }

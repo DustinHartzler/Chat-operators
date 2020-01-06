@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.8
+// @version      1.81
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -115,6 +115,11 @@ function nameAdd() {
         if(opName == "Senff" || opName == "Eduardo Z.") {
             $(this).find('.operator_skills').prepend('<div class="bald-he" title="Bald HE"></div>');
         }
+
+        if(opName == "Rafael Funchal") {
+            $(this).find('.operator_skills').prepend('<div class="beard" title="Smells GOOOOOOD"></div>');
+        }
+
         $(this).find('.operator_capacity').css('width',((opThrottle*14)+2)+'px');
         $(this).find('.operator_name').html(opName);
         $(this).find('.operator_load').html(opLoad+'/'+opThrottle);

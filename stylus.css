@@ -1,7 +1,7 @@
   /* ==UserStyle==
 @name           Happychat Operators
 @namespace      github.com/senff/Chat-operators
-@version        1.8
+@version        1.85
 @description    Make the Happychat Operators list easier to understand.
 @author         Senff
 @updateURL      https://raw.githubusercontent.com/senff/Chat-operators/master/stylus.css
@@ -85,9 +85,13 @@
      
             /* --- Avatar status colors --- */    
             .chat__chat-queue .operators__available img {border-color:#4ab866;}
-            .chat__chat-queue .operators__reserve img {border-color:#0087be;}
+            .chat__chat-queue .operators__available .operator_name,.chat__chat-queue .operators__available .operator_name a {color:#4ab866;}
+            .chat__chat-queue .operators__reserve img {border-color :#0087be;}
+            .chat__chat-queue .operators__reserve .operator_name, .chat__chat-queue .operators__reserve .operator_name a {color:#0087be;}
             .chat__chat-queue .operators__busy img {border-color:#f0b849;}
+            .chat__chat-queue .operators__busy .operator_name, .chat__chat-queue .operators__busy .operator_name a {color:#f0b849;}
             .chat__chat-queue .operators__unavailable img {border-color:#d94f4f;}
+            .chat__chat-queue .operators__unavailable .operator_name, .chat__chat-queue .operators__unavailable .operator_name a {color:#d94f4f;}
 
         .chat__chat-queue .operator_lang,
         .chat__chat-queue .operator_skills {
